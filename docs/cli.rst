@@ -239,14 +239,22 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Launch *Nextflow* interactive console
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
-The *console* command is a wrapper over the Groovy *console*.
-
-TODO-@abhi18av add a screenshot here.
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
+
+The ``console`` command can be invoked like so::
+
+
+    $ nextflow console [options]
+
+
+
+Extended description
+^^^^^^^^^^^^^^^^^^^^
+The ``console`` command is a wrapper over the Groovy *console*.
+
+TODO-@abhi18av add a screenshot here.
 
 
 Options
@@ -267,10 +275,19 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Delete the local copy of a project
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
 
 Usage
+^^^^^^^^^^^^^^^^^^^^
+
+The ``drop`` command can be invoked like so::
+
+
+    $ nextflow drop [options]
+
+
+
+
+Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
 Options
@@ -300,13 +317,19 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Print the usage help for a command
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
-This command is equivalent to ``nextflow`` and prints out the overview of the CLI interface.
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``help`` command can be invoked like so::
+
+
+    $ nextflow help [options]
+
+
+Extended description
+^^^^^^^^^^^^^^^^^^^^
+This command is equivalent to ``nextflow`` and prints out the overview of the CLI interface.
 
 
 Options
@@ -333,11 +356,19 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Print project and system runtime information
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
 
 
 Usage
+^^^^^^^^^^^^^^^^^^^^
+
+The ``info`` command can be invoked like so::
+
+
+    $ nextflow info [options]
+
+
+
+Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
 
@@ -374,6 +405,10 @@ Execute a workflow in a Kubernetes cluster (experimental)
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
+The ``kuberun`` command can be invoked like so::
+
+
+    $ nextflow kuberun [options]
 
 
 Extended description
@@ -489,6 +524,10 @@ List all downloaded projects
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
+The ``list`` command can be invoked like so::
+
+
+    $ nextflow list [options]
 
 
 
@@ -503,8 +542,6 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | Name, shorthand (if any)  | Default    | Description                                                                    | 
 +===========================+============+================================================================================+
-|                           |            |                                                                                |
-+---------------------------+------------+--------------------------------------------------------------------------------+
 | -help, -h                 |  false     | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 
@@ -528,6 +565,13 @@ Print executions log and runtime info
 Usage
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``log`` command can be invoked like so::
+
+
+    $ nextflow log [options]
+
+
+
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
@@ -541,10 +585,28 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | Name, shorthand (if any)  | Default    | Description                                                                    | 
 +===========================+============+================================================================================+
-|                           |            |                                                                                |
+| -after                    |            | Show log entries for runs executed *after* the specified one.                  |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -before                   |            | Show log entries for runs executed *before* the specified one.                 |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -but                      |            | Show log entries for runs executed *but* the specified one.                    |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -filter, -F               |            | Filter log entires by a custom expression                                      |
+|                           |            | e.g. ``process =~ /foo.*/ && status == 'COMPLETED'``                           |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -help, -h                 |  false     | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
+| -list-fields, -l          |  false     | Show all available fields.                                                     |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -quiet                    |  false     | Show only run names.                                                           |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -s                        |  TODO      | Character used to separate column values                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -template, -t             |            | Text template used to each record in the log.                                  |
++---------------------------+------------+--------------------------------------------------------------------------------+
+
+
+
 
 
 
@@ -566,6 +628,13 @@ Download or update a project
 Usage
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``pull`` command can be invoked like so::
+
+
+    $ nextflow pull [options]
+
+
+
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
@@ -579,9 +648,15 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | Name, shorthand (if any)  | Default    | Description                                                                    | 
 +===========================+============+================================================================================+
-|                           |            |                                                                                |
+| -all                      |  false     | Update all downloaded projects.                                                |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -help, -h                 |  false     | Print the command usage.                                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -hub                      |            | Service hub where the project is hosted.                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -r                        |            | Revision to run (either a git ``branch``, ``tag`` or commit ``SHA`` number.    |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -user                     |            | Private repository user name                                                   |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 
 
@@ -604,6 +679,10 @@ Execute a pipeline project
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
+The ``run`` command can be invoked like so::
+
+
+    $ nextflow run [options]
 
 
 
