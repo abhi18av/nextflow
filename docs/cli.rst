@@ -4,7 +4,21 @@
 Command line interface
 ******************
 
-`Nextflow` provides a robust command line interface allowing you to manage the execution of a pipeline. Here's what you'll see at the top-level::
+`Nextflow` provides a robust command line interface allowing you to manage the execution of a pipeline. Here's what you'll see at the top-level. 
+The top-level interface consists of two aspects, `options` and `commands`.::
+
+
+    $ nextflow
+    Usage: nextflow [options] COMMAND [arg...]
+
+
+
+.. _cli-options:
+CLI Options
+============
+
+An overview of the `Nextflow` options::
+
 
     $ nextflow
     Usage: nextflow [options] COMMAND [arg...]
@@ -31,6 +45,22 @@ Command line interface
     -v, -version
         Print the program version
 
+    Commands...
+
+
+.. _cli-commands:
+CLI Commands
+============
+
+
+An overview of the `Nextflow` commands::
+
+
+    $ nextflow
+    Usage: nextflow [options] COMMAND [arg...]
+    
+    Options...
+
     Commands:
     clean         Clean up project cache and work directories
     clone         Clone a project into a folder
@@ -47,16 +77,6 @@ Command line interface
     self-update   Update nextflow runtime to the latest available version
     view          View project script file(s)
 
-The top-level interface consists of two core aspects, `options` and `commands`. 
-
-.. _cli-options:
-CLI Options
-============
-
-.. _cli-commands:
-CLI Commands
-============
-
 clean
 --------------------
 
@@ -72,25 +92,25 @@ Extended description
 Options
 ^^^^^^^^^^^^^^^^^^^^
 
-+--------------------------+------------+--------------+
-| Name, shorthand (if any) | Default    | Description  | 
-+==========================+============+==============+
-| after                    |     -      | column 3     |
-+--------------------------+------------+--------------+
-| before                   |     -      | column 3     |
-+--------------------------+------------+--------------+
-| but                      |     -      | column 3     |
-+--------------------------+------------+--------------+
-| dry-run, n               |   false    | column 3     |
-+--------------------------+------------+--------------+
-| force, n                 |   false    | column 3     |
-+--------------------------+------------+--------------+
-| help, h                  |   false    | column 3     |
-+--------------------------+------------+--------------+
-| keep-logs, k             |   false    | column 3     |
-+--------------------------+------------+--------------+
-| quiet                    |   false    | column 3     |
-+--------------------------+------------+--------------+
++--------------------------+------------+--------------------------------------------------------------------------------+
+| Name, shorthand (if any) | Default    | Description                                                                    | 
++==========================+============+================================================================================+
+| after                    |     -      | Clean up runs executed *after* the specified one.                              |
++--------------------------+------------+--------------------------------------------------------------------------------+
+| before                   |     -      | Clean up runs executed *before* the specified one.                             |
++--------------------------+------------+--------------------------------------------------------------------------------+
+| but                      |     -      | Clean up all runs *except* the specified one.                                  |
++--------------------------+------------+--------------------------------------------------------------------------------+
+| dry-run, n               |   false    | Print names of files to be removed without deleting them.                      | 
++--------------------------+------------+--------------------------------------------------------------------------------+
+| force, n                 |   false    | Force clean command.                                                           |
++--------------------------+------------+--------------------------------------------------------------------------------+
+| help, h                  |   false    | Print the command usage.                                                       |
++--------------------------+------------+--------------------------------------------------------------------------------+
+| keep-logs, k             |   false    | Removes only temporary files but retains execution log entries and metadata.   |                                           
++--------------------------+------------+--------------------------------------------------------------------------------+
+| quiet                    |   false    | Do not print names of files removed.                                           |
++--------------------------+------------+--------------------------------------------------------------------------------+
 
 
 
