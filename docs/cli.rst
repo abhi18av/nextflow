@@ -87,12 +87,19 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Clean up project specific *cache* and *work* directories
 
+Usage
+^^^^^^^^^^^^^^^^^^^^
+
+The ``clean`` command can be invoked like so::
+
+
+    $ nextflow clean [options]
+
+
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 Upon invocation within a directory, ``Nextflow`` creates a project specific ``.nextflow.log`` file, ``.nextflow`` cache directory as well as a ``work`` directory. The ``clean`` option is designed to facilitate rapid iteration without the clutter introduced by previous executions.
 
-Usage
-^^^^^^^^^^^^^^^^^^^^
 
 
 Options
@@ -134,6 +141,18 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Clone a project into a folder
 
+
+
+Usage
+^^^^^^^^^^^^^^^^^^^^
+
+The ``clone`` command can be invoked like so::
+
+
+    $ nextflow clone [options]
+
+
+
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -170,10 +189,16 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Print a project configuration
 
-Extended description
+Usage
 ^^^^^^^^^^^^^^^^^^^^
 
-Usage
+The ``config`` command can be invoked like so::
+
+
+    $ nextflow config [options]
+
+
+Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
 
@@ -254,7 +279,7 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | Name, shorthand (if any)  | Default    | Description                                                                    | 
 +===========================+============+================================================================================+
-| -f                        |            | Delete the repository without taking care of local changes.                    |
+| -f                        |  false     | Delete the repository without taking care of local changes.                    |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -help, -h                 |  false     | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
@@ -277,6 +302,7 @@ Print the usage help for a command
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
+This command is equivalent to ``nextflow`` and prints out the overview of the CLI interface.
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
@@ -289,8 +315,6 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | Name, shorthand (if any)  | Default    | Description                                                                    | 
 +===========================+============+================================================================================+
-|                           |            |                                                                                |
-+---------------------------+------------+--------------------------------------------------------------------------------+
 | -help, -h                 |  false     | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 
@@ -313,15 +337,23 @@ Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
 
+Usage
+^^^^^^^^^^^^^^^^^^^^
+
+
 Options
 ^^^^^^^^^^^^^^^^^^^^
 
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | Name, shorthand (if any)  | Default    | Description                                                                    | 
 +===========================+============+================================================================================+
-|                           |            |                                                                                |
+| -check-updates, -u        |  false     | Check for remote updates.                                                      |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -d                        |  false     | Show detailed information.                                                     |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -help, -h                 |  false     | Print the command usage.                                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -o                        |  text      | Output format, either ``text``, ``json`` or ``yaml``.                          |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 
 
@@ -339,6 +371,11 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Execute a workflow in a Kubernetes cluster (experimental)
 
+
+Usage
+^^^^^^^^^^^^^^^^^^^^
+
+
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -349,10 +386,89 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | Name, shorthand (if any)  | Default    | Description                                                                    | 
 +===========================+============+================================================================================+
-|                           |            |                                                                                |
+| -E                        |  false     | Exports all current system environment.                                        |
 +---------------------------+------------+--------------------------------------------------------------------------------+
-| -help, -h                 |  false     | Print the command usage.                                                       |
+| -ansi-log                 |            | Enable/disable ANSI console logging.                                           |
 +---------------------------+------------+--------------------------------------------------------------------------------+
+| -bucket-dir               |            | Remote bucket where intermediate result files are stored.                      |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -cache                    |            | Enable/disable processes caching.                                              |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -dsl2                     | false      | Execute the workflow using DSL2 syntax.                                        |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -dump-channels            |            | Dump channels for debugging purpose.                                           |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -dump-hashes              | false      | Dump task hash keys for debugging purpose.                                     |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -e.                       | {}         | Add the specified variable to execution environment. Syntax: ``-e.key=value``  |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -entry                    |            | Entry workflow name to be executed.                                            |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -h, -help                 | false      | Print the command usage.                                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -hub                      |            | Service hub where the project is hosted.                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -latest                   | false      | Pull latest changes before run.                                                |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -lib                      |            | Library extension path.                                                        |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -name                     |            | Assign a mnemonic name to the a pipeline run.                                  |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -n, -namespace            |            | Specify the K8s namespace to use.                                              |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -offline                  | false      | Do not check for remote project updates.                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -params-file              |            | Load script parameters from a JSON/YAML file.                                  |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -pod-image                |            | Specify the container image for the Nextflow pod.                              |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -process.                 | {}         | Set process options.                                                           |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -profile                  |            | Choose a configuration profile.                                                |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -qs, -queue-size          |            | Max number of processes that can be executed in parallel by each executor.     |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -resume                   |            | Execute the script using the cached results, useful to continue executions that|
+|                           |            | was stopped by an error.                                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -r, -revision             |            | Revision of the project to run (either a git branch, tag or commit SHA number) |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -test                     |            | Test a script function with the name specified.                                |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -user                     |            | Private repository user name.                                                  |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -v, -volume-mount         |            | Volume claim mounts eg. ``my-pvc:/mnt/path``                                   |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-conda               |            | Use the specified Conda environment package or                                 |
+|                           |            | file (must end with ``.yml|.yaml``)                                            |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-dag                 |            | Create pipeline DAG file.                                                      |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-docker              |            | Enable process execution in a Docker container.                                |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -N, -with-notification    |            | Send a notification email on workflow completion to the specified recipients.  |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-podman              |            | Enable process execution in a Podman container.                                |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-report              |            | Create processes execution html report.                                        |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-singularity         |            | Enable process execution in a Singularity container.                           |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-timeline            |            | Create processes execution timeline file.                                      |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-tower               |            | Monitor workflow execution with Seqera Tower service.                          |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-trace               |            | Create processes execution tracing file.                                       |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -with-weblog              |            | Send workflow status messages via HTTP to target URL.                          |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -without-docker           | false      | Disable process execution with Docker.                                         |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -without-podman           |            | Disable process execution in a Podman container.                               |
++---------------------------+------------+--------------------------------------------------------------------------------+
+| -w, -work-dir             |            | Directory where intermediate result files are stored.                          |
++---------------------------+------------+--------------------------------------------------------------------------------+
+
 
 
 
@@ -370,8 +486,15 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 List all downloaded projects
 
+
+Usage
+^^^^^^^^^^^^^^^^^^^^
+
+
+
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
+
 
 
 Options
@@ -401,10 +524,12 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Print executions log and runtime info
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
 
 Usage
+^^^^^^^^^^^^^^^^^^^^
+
+
+Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
 
@@ -436,10 +561,13 @@ pull
 Description
 ^^^^^^^^^^^^^^^^^^^^
 Download or update a project
-Extended description
-^^^^^^^^^^^^^^^^^^^^
+
 
 Usage
+^^^^^^^^^^^^^^^^^^^^
+
+
+Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
 
@@ -473,12 +601,14 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Execute a pipeline project
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
 
+
+
+Extended description
+^^^^^^^^^^^^^^^^^^^^
 
 
 Options
@@ -509,13 +639,12 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 Update nextflow runtime to the latest available version
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
 
-
+Extended description
+^^^^^^^^^^^^^^^^^^^^
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -544,12 +673,14 @@ Description
 ^^^^^^^^^^^^^^^^^^^^
 View project script file(s)
 
-Extended description
-^^^^^^^^^^^^^^^^^^^^
 
 Usage
 ^^^^^^^^^^^^^^^^^^^^
 
+
+
+Extended description
+^^^^^^^^^^^^^^^^^^^^
 
 
 Options
