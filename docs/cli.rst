@@ -156,7 +156,7 @@ The ``clone`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
-The ``clone`` command faciliatates collaboration by allowing the users to download any existing pipeline from the specified ``-hub`` into the current directory and modify it accordingly. For downloading the pipeline into the global cache ``~/.nextflow/assets`` , please refer ``pull`` command.
+The ``clone`` command faciliatates collaboration by allowing the users to download any existing pipeline from the specified ``-hub`` into the current directory and modify it accordingly. For downloading a pipeline into the global cache ``~/.nextflow/assets`` , please refer ``pull`` command.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -416,7 +416,7 @@ The ``kuberun`` command can be invoked like so::
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
-The ``kuberun`` command building upon the ``run`` command and offers a deep integration with the ``Kubernetes`` execution environment.
+The ``kuberun`` command builds upon the ``run`` command and offers a deep integration with the ``Kubernetes`` execution environment.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -643,7 +643,7 @@ The ``pull`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
-The ``pull`` command faciliatates collaboration by allowing the users to download any existing pipeline from the specified ``-hub`` and execute it using the ``run`` command. For downloading the pipeline into the project directory, please refer the ``clone`` command.
+The ``pull`` command faciliatates collaboration by allowing the users to download any existing pipeline from the specified ``-hub`` and execute it using the ``run`` command. For downloading a pipeline into the project directory, please refer the ``clone`` command.
 
 
 Options
@@ -694,6 +694,7 @@ The ``run`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``run`` command is used to initiate the execution of ``nextflow`` script or pre-downloaded pipeline. Along with serving the purpsoe of script execution, this command facilitates rapid iteratios and debugging via numerous options.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -810,6 +811,7 @@ The ``self-update`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``self-update`` command directs the ``nextflow`` cli to update itself to the latest stable release.
 
 Examples
 ^^^^^^^^^^^^^^^^^^^^
@@ -838,6 +840,7 @@ The ``view`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``view`` command is used to inspect the pipelines which are already stored in the global nextflow cache. For downloading a pipeline into the global cache ``~/.nextflow/assets`` , please refer ``pull`` command.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
