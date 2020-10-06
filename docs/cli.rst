@@ -50,35 +50,10 @@ Command line interface
 The top-level interface consists of two core aspects, `options` and `commands`. 
 
 .. _cli-options:
-
 CLI Options
 ============
 
-
-The top-level CLI options for `Nextflow` look like this::
-
-    Options:
-    -C
-        Use the specified configuration file(s) overriding any defaults
-    -D
-        Set JVM properties
-    -bg
-        Execute nextflow in background
-    -c, -config
-        Add the specified file to configuration set
-    -d, -dockerize
-        Launch nextflow via Docker (experimental)
-    -h
-        Print this help
-    -log
-        Set nextflow log file path
-    -q, -quiet
-        Do not print information messages
-    -syslog
-        Send logs to syslog server (eg. localhost:514)
-    -v, -version
-        Print the program version
-
+.. _cli-commands:
 CLI Commands
 ============
 
@@ -88,9 +63,7 @@ clean
 
 Description
 ^^^^^^^^^^^^^^^^^^^^
-
-The `clean` command is used for the the clean up project 
-
+Clean up project cache and work directories
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
@@ -98,6 +71,26 @@ Extended description
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
+
++--------------------------+------------+--------------+
+| Name, shorthand (if any) | Default    | Description  | 
++==========================+============+==============+
+| after                    |     -      | column 3     |
++--------------------------+------------+--------------+
+| before                   |     -      | column 3     |
++--------------------------+------------+--------------+
+| but                      |     -      | column 3     |
++--------------------------+------------+--------------+
+| dry-run, n               |   false    | column 3     |
++--------------------------+------------+--------------+
+| force, n                 |   false    | column 3     |
++--------------------------+------------+--------------+
+| help, h                  |   false    | column 3     |
++--------------------------+------------+--------------+
+| keep-logs, k             |   false    | column 3     |
++--------------------------+------------+--------------+
+| quiet                    |   false    | column 3     |
++--------------------------+------------+--------------+
 
 
 
