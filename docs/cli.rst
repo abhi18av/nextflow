@@ -18,7 +18,7 @@ Here's what you'll see at the top-level upon invoking ``nextflow`` CLI.::
 CLI Options
 ============
 
-An overview of the `Nextflow` options::
+An overview of the `Nextflow` top-level options::
 
 
     $ nextflow
@@ -54,7 +54,7 @@ CLI Commands
 ============
 
 
-An overview of the `Nextflow` commands::
+An overview of the `Nextflow` top-level commands::
 
 
     $ nextflow
@@ -156,6 +156,7 @@ The ``clone`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``clone`` command faciliatates collaboration by allowing the users to download any existing pipeline from the specified ``-hub`` into the current directory and modify it accordingly. For downloading the pipeline into the global cache ``~/.nextflow/assets`` , please refer ``pull`` command.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -165,9 +166,9 @@ Options
 +===========================+============+================================================================================+
 | -help, -h                 |  false     | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
-| -hub                      |            | Service hub where the project is hosted.                                       |
+| -hub                      |  github    | Service hub where the project is hosted. Options: ``gitlab`` or ``bitbucket``  |
 +---------------------------+------------+--------------------------------------------------------------------------------+
-| -r                        |            | Revision to clone - It can be a git ``branch``, ``tag`` or ``revision number`` |
+| -r                        |  master    | Revision to clone - It can be a git ``branch``, ``tag`` or ``revision number`` |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -user                     |            | Private repository user name                                                   |
 +---------------------------+------------+--------------------------------------------------------------------------------+
@@ -201,6 +202,7 @@ The ``config`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``config`` command is used for printing the project's configuration and is especially useful while debugging.
 
 
 Options
@@ -252,9 +254,7 @@ The ``console`` command can be invoked like so::
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
-The ``console`` command is a wrapper over the Groovy *console*.
-
-TODO-@abhi18av add a screenshot here.
+The ``console`` command is a wrapper over the Groovy *console* and provides an interactive REPL (Read-Eval-Print-Loop) for quick experimentation.
 
 
 Options
@@ -289,6 +289,8 @@ The ``drop`` command can be invoked like so::
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
+
+The ``drop`` command is used to remove the piplines which have already been downloaded into the global cache. Please refer the ``list`` command for generating a list of downloaded pipelines.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -329,7 +331,7 @@ The ``help`` command can be invoked like so::
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
-This command is equivalent to ``nextflow`` and prints out the overview of the CLI interface.
+This command is equivalent to simply issuing ``nextflow`` at the command line - it prints out the overview of the CLI interface and enumerates the top-level *options* and *commands*.
 
 
 Options
@@ -371,6 +373,7 @@ The ``info`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``info`` command prints out the nextflow runtime information about the hardware as well as the software versions of the ``Nextflow version and build``, ``Operating System`` and ``Groovy and Java runtime``.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -413,7 +416,7 @@ The ``kuberun`` command can be invoked like so::
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
-
+The ``kuberun`` command building upon the ``run`` command and offers a deep integration with the ``Kubernetes`` execution environment.
 
 Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -441,7 +444,7 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -h, -help                 | false      | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
-| -hub                      |            | Service hub where the project is hosted.                                       |
+| -hub                      | github     | Service hub where the project is hosted. Options: ``gitlab`` or ``bitbucket``  |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -latest                   | false      | Pull latest changes before run.                                                |
 +---------------------------+------------+--------------------------------------------------------------------------------+
@@ -534,6 +537,7 @@ The ``list`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``list`` commands prints a list of the projects which are already downloaded into the global cache ``~/.nextflow/assets``.
 
 
 Options
@@ -575,7 +579,7 @@ The ``log`` command can be invoked like so::
 
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
-
+The ``log`` command is used to query the execution logs i.e. ``.nextflow.log`` files which are generated along with every invocation of nextflow.
 
 
 Options
@@ -600,7 +604,7 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -quiet                    |  false     | Show only run names.                                                           |
 +---------------------------+------------+--------------------------------------------------------------------------------+
-| -s                        |  TODO      | Character used to separate column values                                       |
+| -s                        |            | Character used to separate column values                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -template, -t             |            | Text template used to each record in the log.                                  |
 +---------------------------+------------+--------------------------------------------------------------------------------+
@@ -639,6 +643,7 @@ The ``pull`` command can be invoked like so::
 Extended description
 ^^^^^^^^^^^^^^^^^^^^
 
+The ``pull`` command faciliatates collaboration by allowing the users to download any existing pipeline from the specified ``-hub`` and execute it using the ``run`` command. For downloading the pipeline into the project directory, please refer the ``clone`` command.
 
 
 Options
@@ -652,7 +657,7 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -help, -h                 |  false     | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
-| -hub                      |            | Service hub where the project is hosted.                                       |
+| -hub                      |  github    | Service hub where the project is hosted. Options: ``gitlab`` or ``bitbucket``  |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -r                        |            | Revision to run (either a git ``branch``, ``tag`` or commit ``SHA`` number).   |
 +---------------------------+------------+--------------------------------------------------------------------------------+
@@ -717,7 +722,7 @@ Options
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -h, -help                 | false      | Print the command usage.                                                       |
 +---------------------------+------------+--------------------------------------------------------------------------------+
-| -hub                      |            | Service hub where the project is hosted.                                       |
+| -hub                      | github     | Service hub where the project is hosted. Options: ``gitlab`` or ``bitbucket``  |
 +---------------------------+------------+--------------------------------------------------------------------------------+
 | -latest                   | false      | Pull latest changes before run.                                                |
 +---------------------------+------------+--------------------------------------------------------------------------------+
