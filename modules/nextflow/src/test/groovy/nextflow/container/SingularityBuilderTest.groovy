@@ -131,6 +131,12 @@ class SingularityBuilderTest extends Specification {
                 .setCpus('2')
                 .build()
                 .runCommand == 'set +u; env - PATH="$PATH" SINGULARITYENV_TMP="$TMP" SINGULARITYENV_TMPDIR="$TMPDIR" singularity exec --vm-cpu 2 busybox'
+
+        new SingularityBuilder('busybox')
+                .setMemory('100')
+                .build()
+                .runCommand == 'set +u; env - PATH="$PATH" SINGULARITYENV_TMP="$TMP" SINGULARITYENV_TMPDIR="$TMPDIR" singularity exec --vm-ram 100 busybox'
+
     }
 
     @Unroll
