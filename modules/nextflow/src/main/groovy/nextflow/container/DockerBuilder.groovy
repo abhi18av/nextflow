@@ -49,21 +49,35 @@ class DockerBuilder extends ContainerBuilder<DockerBuilder> {
 
     private String mountFlags0
 
-    DockerBuilder( String name ) {
+    private int countCpus(String cpuString) {
+        def cpuCount
+        def cpuRange = cpuString.findAll(/\d+/)*.toInteger()
+        if (cpuRange.size() == 1) {
+            cpuCount = 1
+        } else if (cpuRange.size() == 2) {
+            cpuCount = (cpuRange[0]..cpuRange[-1]).size()
+        } else {
+            cpuCount = cpuRange.size()
+        }
+        return cpuCount
+    }
+
+
+    DockerBuilder(String name) {
         this.image = name
     }
 
     @Override
-    DockerBuilder params( Map params ) {
-        if( !params ) return this
+    DockerBuilder params(Map params) {
+        if (!params) return this
 
-        if( params.containsKey('temp') )
+        if (params.containsKey('temp'))
             this.temp = params.temp
 
-        if( params.containsKey('engineOptions') )
+        if (params.containsKey('engineOptions'))
             addEngineOptions(params.engineOptions.toString())
 
-        if( params.containsKey('runOptions') )
+        if (params.containsKey('runOptions'))
             addRunOptions(params.runOptions.toString())
 
         if ( params.containsKey('userEmulation') )
@@ -117,7 +131,10 @@ class DockerBuilder extends ContainerBuilder<DockerBuilder> {
         result << 'run -i '
 
         if( cpus ) {
-            if( legacy )
+
+            result << "--cpus ${countCpus(cpus)} "
+
+            if (legacy)
                 result << "--cpuset ${cpus} "
             else
                 result << "--cpuset-cpus ${cpus} "
