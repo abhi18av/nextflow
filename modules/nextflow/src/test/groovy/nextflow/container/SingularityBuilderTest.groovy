@@ -124,7 +124,7 @@ class SingularityBuilderTest extends Specification {
     }
 
 
-    def 'test memory and cpuset'() {
+    def 'test memory and cpus'() {
 
         expect:
         new SingularityBuilder('busybox')
