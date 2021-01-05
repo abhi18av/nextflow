@@ -271,6 +271,8 @@ class BashWrapperBuilder {
             binding.unstage_outputs = null
         }
 
+        binding.score = getScoreSnippet()
+
         binding.after_script = afterScript ? "# 'afterScript' directive\n$afterScript" : null
 
         // patch root ownership problem on files created with docker
@@ -330,6 +332,10 @@ class BashWrapperBuilder {
 
     private String getBeforeScriptSnippet() {
         beforeScript ? "# beforeScript directive\n$beforeScript\n" : null
+    }
+
+   private String getScoreSnippet() {
+        score ? "# 'score' directive\n$score" : null
     }
 
     private String getModuleLoadSnippet() {
