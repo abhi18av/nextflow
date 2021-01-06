@@ -157,6 +157,8 @@ class TowerClient implements TraceObserver {
         this.aliveInterval = d
     }
 
+
+
     void setRequestInterval(Duration d) {
         this.requestInterval = d
     }
