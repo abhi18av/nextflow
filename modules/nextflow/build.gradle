@@ -15,7 +15,7 @@ repositories {
 
 sourceSets {
     main.java.srcDirs = []
-    main.groovy.srcDirs = ['src/main/java', 'src/main/groovy', 'src/main/clojure']
+    main.groovy.srcDirs = ['src/main/java', 'src/main/groovy']
     main.resources.srcDirs = ['src/main/resources']
     test.java.srcDirs = []
     test.groovy.srcDirs = ['src/test/groovy', 'src/test/clojure']
