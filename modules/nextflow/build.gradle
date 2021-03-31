@@ -15,10 +15,10 @@ repositories {
 
 sourceSets {
     main.java.srcDirs = []
-    main.groovy.srcDirs = ['src/main/java', 'src/main/groovy']
+    main.groovy.srcDirs = ['src/main/java', 'src/main/groovy', 'src/main/clojure']
     main.resources.srcDirs = ['src/main/resources']
     test.java.srcDirs = []
-    test.groovy.srcDirs = ['src/test/groovy']
+    test.groovy.srcDirs = ['src/test/groovy', 'src/test/clojure']
     test.resources.srcDirs = ['src/test/resources']
 }
 
@@ -27,6 +27,7 @@ compileGroovy {
 }
 
 clojureRepl {
+    port = 55555
     handler = 'cider.nrepl/cider-nrepl-handler'
 }
 
@@ -35,7 +36,7 @@ dependencies {
     implementation 'org.clojure:clojure:1.10.2'
     testRuntimeOnly 'org.ajoberstar:jovial:0.3.0'
     devImplementation 'org.clojure:tools.namespace:1.0.0'
-    devImplementation 'cider:cider-nrepl:0.25.16'
+    devImplementation 'cider:cider-nrepl:0.25.9'
 
     compile(project(':nf-commons'))
     compile(project(':nf-httpfs'))

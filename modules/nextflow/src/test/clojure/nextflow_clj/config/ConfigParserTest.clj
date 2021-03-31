@@ -1,4 +1,4 @@
-(ns config.ConfigParserTest
+(ns nextflow-clj.config.ConfigParserTest
   (:require [clojure.test :refer :all])
   (:import (nextflow.config ConfigParser)))
 
