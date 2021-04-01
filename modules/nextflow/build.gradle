@@ -28,7 +28,7 @@ compileGroovy {
 
 clojureRepl {
     port = 55555
-    handler = 'cider.nrepl/cider-nrepl-handler'
+    middleware= ['cider.nrepl/cider-middleware', 'refactor-nrepl.middleware/wrap-refactor']
 }
 
 dependencies {
@@ -37,6 +37,7 @@ dependencies {
     testRuntimeOnly 'org.ajoberstar:jovial:0.3.0'
     devImplementation 'org.clojure:tools.namespace:1.0.0'
     devImplementation 'cider:cider-nrepl:0.25.9'
+    devImplementation 'refactor-nrepl:refactor-nrepl:2.5.1'
 
     compile(project(':nf-commons'))
     compile(project(':nf-httpfs'))
