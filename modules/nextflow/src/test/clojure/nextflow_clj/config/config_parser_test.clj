@@ -15,7 +15,7 @@
 
 (comment
   (let [CONFIG "mem1 = 1.GB"]
-    (println (scratch-get-field-from-config-text CONFIG "mem1")))
+    (scratch-get-field-from-config-text CONFIG "mem1"))
   )
 
 (deftest scratch-function-test
@@ -25,3 +25,40 @@
 
 
 (def ^ConfigParser config-parser (ConfigParser.))
+
+(.parse config-parser "mem1 = 1.GB")
+
+(comment
+  (ns nextflow-clj.config.configParserTest
+    (:import (nextflow.config ConfigParser)
+             (java.nio.file Paths))
+    (:require [clojure.java.data :as jv]
+              [clojure.inspector :as insp]))
+
+
+  (def config-map "
+  plugins {
+           id 'foo'
+           id 'bar'
+           id 'bar'
+           }
+
+  process {
+           cpus = 1
+                mem = 2
+           }
+")
+
+
+  (def configParser (ConfigParser.))
+
+  (.parse configParser ^String config-map)
+
+  (bean configParser)
+
+  (.-ENVIRONMENTS_METHOD configParser)
+
+  (clojure.pprint/print-table (:members (clojure.reflect/reflect configParser)))
+
+
+  '())
