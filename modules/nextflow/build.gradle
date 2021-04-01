@@ -28,7 +28,7 @@ compileGroovy {
 
 clojureRepl {
     port = 55555
-    middleware= ['cider.nrepl/cider-middleware', 'refactor-nrepl.middleware/wrap-refactor']
+    middleware= ['cider.nrepl/cider-middleware', 'refactor-nrepl.middleware/wrap-refactor', 'com.billpiel.sayid.nrepl-middleware/wrap-sayid']
 }
 
 dependencies {
@@ -38,6 +38,7 @@ dependencies {
     devImplementation 'org.clojure:tools.namespace:1.0.0'
     devImplementation 'cider:cider-nrepl:0.25.9'
     devImplementation 'refactor-nrepl:refactor-nrepl:2.5.1'
+    devImplementation 'com.billpiel:sayid:0.1.0'
 
     compile(project(':nf-commons'))
     compile(project(':nf-httpfs'))

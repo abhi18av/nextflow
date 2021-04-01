@@ -22,3 +22,6 @@
   (testing "Parses the config text cleanly"
     (let [CONFIG "mem1 = 1.GB"]
       (is "1 GB" (scratch-get-field-from-config-text CONFIG "mem1")))))
+
+
+(def ^ConfigParser config-parser (ConfigParser.))
