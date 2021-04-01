@@ -12,8 +12,7 @@
                                 "maxRetries"    "3"
                                 }))
 
-  (.setContext taskConfig (java.util.HashMap. {"my_shell" "hello"
-                                               }))
+  (.setContext taskConfig (java.util.HashMap. {"my_shell" "hello"}))
 
   (bean taskConfig)
 
