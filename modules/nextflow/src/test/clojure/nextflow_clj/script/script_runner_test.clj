@@ -1,4 +1,18 @@
-(ns nextflow-clj.script.script-runner-test)
+(ns nextflow-clj.script.script-runner-test
+  (:require [clojure.test :refer :all])
+  (:import (nextflow.script TestScriptRunner)
+           (java.util HashMap)))
+
+(comment
+  '())
+
+(deftest test-script-runner
+  (testing "test process"
+    (let [script "process sayHello  {\"echo Hello world\"}"
+          runner (TestScriptRunner. (HashMap. {"process" {"executor" "nope"}}))
+          result (bean (.execute (.setScript ^TestScriptRunner runner script)))]
+      (is (= "echo Hello world" (:val result))))))
+
 
 (comment
   (ns nextflow-clj.script.scriptRunnerTest
