@@ -1,17 +1,34 @@
 (ns nextflow-clj.script.script-runner-test
   (:require [clojure.test :refer :all])
-  (:import (nextflow.script TestScriptRunner)
-           (java.util HashMap)))
+  #_(:import (nextflow.script TestScriptRunner)
+      (java.util HashMap)))
 
-(comment
-  '())
+;; DONE
+;; NOTE: Uncommenting the code fails the build since TestScriptRunner won't be found
 
-(deftest test-script-runner
-  (testing "test process"
-    (let [script "process sayHello  {\"echo Hello world\"}"
-          runner (TestScriptRunner. (HashMap. {"process" {"executor" "nope"}}))
-          result (bean (.execute (.setScript ^TestScriptRunner runner script)))]
-      (is (= "echo Hello world" (:val result))))))
+#_(deftest test-script-runner
+
+    (testing "test process"
+      (let [script "process sayHello  {\"echo Hello world\"}"
+            runner (TestScriptRunner. (HashMap. {"process" {"executor" "nope"}}))
+            result (bean (.execute (.setScript ^TestScriptRunner runner script)))]
+        (is (= "echo Hello world" (:val result)))))
+
+
+    (testing "test process with args"
+      (let [script " process task2  {\n
+                    input:\n
+                    val x from 1\n
+                    val y from ([3])\n
+                    output:\n
+                    stdout result\n\n
+                    \"\"\"echo $x - $y\"\"\"\n
+                    } "
+            runner (TestScriptRunner. (HashMap. {"process" {"executor" "nope"}}))
+            result (bean (.execute (.setScript ^TestScriptRunner runner script)))]
+        (is (= "echo 1 - 3" (:val result)))))
+
+    )
 
 
 (comment

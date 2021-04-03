@@ -18,7 +18,7 @@ sourceSets {
     main.groovy.srcDirs = ['src/main/java', 'src/main/groovy']
     main.resources.srcDirs = ['src/main/resources']
     test.java.srcDirs = []
-    test.groovy.srcDirs = ['src/test/groovy', 'src/test/clojure']
+    test.groovy.srcDirs = ['src/test/groovy']
     test.resources.srcDirs = ['src/test/resources']
 }
 

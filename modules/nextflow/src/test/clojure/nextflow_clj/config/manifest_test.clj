@@ -4,9 +4,7 @@
            (java.util HashMap)
            (groovy.util ConfigObject)))
 
-(comment
-  ;; DONE
-  '())
+;; DONE
 
 (deftest check-manifest-from-map
   (testing "should check manifest object"
