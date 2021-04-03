@@ -1,6 +1,7 @@
 (ns nextflow-clj.scm.asset-manager-test
   (:require [clojure.pprint :as cpprint]
             [clojure.reflect :as creflect])
+  (:use (nextflow.extension))
   (:import (nextflow.scm AssetManager)
            (test TemporaryPath)))
 
@@ -37,7 +38,9 @@
   (.toFile ^java.nio.file.Path (.getRoot ^TemporaryPath temp-dir))
 
   (def foldr (.getRoot temp-dir))
-  (.resolve ^java.nio.file.Path foldr 'cbcrg/pipe1')
+  (.resolve ^java.nio.file.Path foldr "cbcrg/pipe1")
+
+  (.isDirectory (.resolve foldr "cbcrg/pipe1"))
 
   ;; RepositoryInfo
   (comment
