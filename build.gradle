@@ -19,6 +19,7 @@ plugins {
     id "io.codearte.nexus-staging" version "0.21.2"
     id 'java'
     id 'idea'
+    id 'dev.clojurephant.clojure' version '0.6.0'
 }
 
 // Add ability to test with upcoming versions of Groovy
@@ -45,12 +46,42 @@ if (groovyVer) {
     }
 }
 
-def projects(String...args) {
-    args.collect {project(it)}
+def projects(String... args) {
+    args.collect { project(it) }
 }
 
 group = 'io.nextflow'
 version = rootProject.file('VERSION').text.trim()
+
+
+clojureRepl {
+    port = 55555
+    middleware = ['cider.nrepl/cider-middleware', 'refactor-nrepl.middleware/wrap-refactor']
+//     'com.billpiel.sayid.nrepl-middleware/wrap-sayid', 'vlaaad.reveal.nrepl/middleware'
+}
+
+dependencies {
+
+    // start of clojure libs
+    implementation 'org.clojure:clojure:1.10.2'
+//    implementation 'com.rpl:proxy-plus:0.0.6'
+    implementation 'org.clojure:java.data:1.0.86'
+
+    testRuntimeOnly 'org.ajoberstar:jovial:0.3.0'
+
+    implementation 'org.clojure:tools.namespace:1.0.0'
+    implementation 'cider:cider-nrepl:0.25.9'
+    implementation 'refactor-nrepl:refactor-nrepl:2.5.1'
+    implementation 'djblue:portal:0.10.0'
+
+//    devImplementation 'com.billpiel:sayid:0.1.0'
+//    devImplementation 'cljfx:cljfx:1.7.13'
+//    devImplementation 'vlaaad:reveal:1.3.199'
+
+    // end of clojure libs
+
+
+}
 
 allprojects {
     apply plugin: 'java'
@@ -69,6 +100,10 @@ allprojects {
         mavenCentral()
         maven { url 'https://repo.eclipse.org/content/groups/releases' }
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven {
+            name = 'clojars'
+            url = 'https://repo.clojars.org'
+        }
     }
 
     configurations {
@@ -79,7 +114,9 @@ allprojects {
         groovyDoc.extendsFrom runtime
     }
 
+
     dependencies {
+
         // see https://docs.gradle.org/4.1/userguide/dependency_management.html#sec:module_replacement
         modules {
             module("commons-logging:commons-logging") { replacedBy("org.slf4j:jcl-over-slf4j") }
@@ -94,7 +131,7 @@ allprojects {
     test {
         useJUnitPlatform()
     }
-    
+
     // this is required due to this IDEA bug
     // https://youtrack.jetbrains.com/issue/IDEA-129282
     sourceSets {
