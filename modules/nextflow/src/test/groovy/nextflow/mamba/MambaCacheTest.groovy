@@ -67,7 +67,7 @@ class MambaCacheTest extends Specification {
         then:
         1 * cache.isYamlFilePath(ENV)
         1 * cache.getCacheDir() >> BASE
-        prefix.toString() == '/mamba/envs/env-eaeb133f4ca62c95e9c0eec7ef8d553b'
+        prefix.toString() == '/conda/envs/env-eaeb133f4ca62c95e9c0eec7ef8d553b'
     }
 
 
@@ -76,7 +76,7 @@ class MambaCacheTest extends Specification {
         given:
         def folder = Files.createTempDirectory('test')
         def cache = Spy(MambaCache)
-        def BASE = Paths.get('/mamba/envs')
+        def BASE = Paths.get('/conda/envs')
         def ENV = folder.resolve('foo.yml')
         ENV.text = '''
             channels:
@@ -94,7 +94,7 @@ class MambaCacheTest extends Specification {
         then:
         1 * cache.isYamlFilePath(ENV.toString())
         1 * cache.getCacheDir() >> BASE
-        prefix.toString() == '/mamba/envs/foo-9416240708c49c4e627414b46a743664'
+        prefix.toString() == '/conda/envs/foo-9416240708c49c4e627414b46a743664'
 
         cleanup:
         folder?.deleteDir()
@@ -105,12 +105,12 @@ class MambaCacheTest extends Specification {
 
         given:
         def cache = Spy(MambaCache)
-        def BASE = Paths.get('/mamba/envs')
+        def BASE = Paths.get('/conda/envs')
         def ENV = Files.createTempFile('test', '.yml')
         ENV.text = '''  
             name: my-env-1.1
             channels:
-              - biomamba
+              - bioconda
               - defaults
             dependencies:
               # Default bismark
@@ -124,7 +124,7 @@ class MambaCacheTest extends Specification {
         then:
         1 * cache.isYamlFilePath(ENV.toString())
         1 * cache.getCacheDir() >> BASE
-        prefix.toString() == '/mamba/envs/my-env-1.1-e7fafe40ca966397a2c0d9bed7181aa7'
+        prefix.toString() == '/conda/envs/my-env-1.1-e7fafe40ca966397a2c0d9bed7181aa7'
 
     }
 
@@ -133,7 +133,7 @@ class MambaCacheTest extends Specification {
         given:
         def folder = Files.createTempDirectory('test')
         def cache = Spy(MambaCache)
-        def BASE = Paths.get('/mamba/envs')
+        def BASE = Paths.get('/conda/envs')
         def ENV = folder.resolve('bar.txt')
         ENV.text = '''
                 star=2.5.4a
@@ -148,7 +148,7 @@ class MambaCacheTest extends Specification {
         1 * cache.isYamlFilePath(ENV.toString())
         1 * cache.isTextFilePath(ENV.toString())
         1 * cache.getCacheDir() >> BASE
-        prefix.toString() == '/mamba/envs/bar-8a4aa7db8ddb8ce4eb4d450d4814a437'
+        prefix.toString() == '/conda/envs/bar-8a4aa7db8ddb8ce4eb4d450d4814a437'
 
         cleanup:
         folder?.deleteDir()
@@ -224,7 +224,7 @@ class MambaCacheTest extends Specification {
 
         given:
         def ENV = 'foo.yml'
-        def PREFIX = Paths.get('/mamba/envs/my-env')
+        def PREFIX = Paths.get('/conda/envs/my-env')
         def cache = Spy(MambaCache)
 
         when:
@@ -233,7 +233,7 @@ class MambaCacheTest extends Specification {
         1 * cache.isYamlFilePath(ENV)
         0 * cache.isTextFilePath(ENV)
         1 * cache.makeAbsolute(ENV) >> Paths.get('/usr/base').resolve(ENV)
-        1 * cache.runCommand("mamba env create --prefix $PREFIX --file /usr/base/foo.yml") >> null
+        1 * cache.runCommand("conda env create --prefix $PREFIX --file /usr/base/foo.yml") >> null
         result == PREFIX
 
     }
@@ -242,7 +242,7 @@ class MambaCacheTest extends Specification {
 
         given:
         def ENV = 'foo.txt'
-        def PREFIX = Paths.get('/mamba/envs/my-env')
+        def PREFIX = Paths.get('/conda/envs/my-env')
         def cache = Spy(MambaCache)
 
         when:
@@ -271,7 +271,7 @@ class MambaCacheTest extends Specification {
         then:
         cache.createTimeout.minutes == 5
         cache.createOptions == '--foo --bar'
-        cache.configCacheDir0 == Paths.get('/mamba/cache')
+        cache.configCacheDir0 == Paths.get('/conda/cache')
     }
 
     def 'should define cache dir from config'() {
