@@ -27,6 +27,8 @@ import groovy.util.logging.Slf4j
 import nextflow.Session
 import nextflow.conda.CondaCache
 import nextflow.conda.CondaConfig
+import nextflow.mamba.MambaCache
+import nextflow.mamba.MambaConfig
 import nextflow.container.ContainerConfig
 import nextflow.container.ContainerHandler
 import nextflow.exception.ProcessException
@@ -568,6 +570,18 @@ class TaskRun implements Cloneable {
         final cache = new CondaCache(new CondaConfig(cfg))
         cache.getCachePathFor(config.conda as String)
     }
+
+
+    @Memoized
+    Path getMambaEnv() {
+        if( !config.mamba )
+            return null
+
+        final cfg = processor.session.config.mamba as Map ?: Collections.emptyMap()
+        final cache = new MambaCache(new MambaConfig(cfg))
+        cache.getCachePathFor(config.mamba as String)
+    }
+
 
     /**
      * The name of a docker container where the task is supposed to run when provided
