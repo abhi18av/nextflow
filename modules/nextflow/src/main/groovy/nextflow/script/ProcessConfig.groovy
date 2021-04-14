@@ -802,6 +802,33 @@ class ProcessConfig implements Map<String,Object>, Cloneable {
 
     }
 
+
+    /**
+     * Allow the user to specify `mamba` directive with a path and a list of named parameters, eg:
+     *
+     * @param entry
+     *      A map object representing mamba config options
+     * @return
+     *      The {@link ProcessConfig} instance itself
+     */
+    ProcessConfig mamba( Map entry ) {
+
+        if( !entry )
+            return this
+
+        def allOptions = (List)configProperties.get('mamba')
+        if( !allOptions ) {
+            allOptions = new ConfigList()
+            configProperties.put('mamba', allOptions)
+        }
+
+        allOptions.add(entry)
+        return this
+
+    }
+
+
+
     ProcessConfig accelerator( Map params, value )  {
         if( value instanceof Number ) {
             if( params.limit==null )
