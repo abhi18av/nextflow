@@ -1967,6 +1967,12 @@ class TaskProcessor {
             keys.add(conda)
         }
 
+        final mamba = task.getMambaEnv()
+        if( mamba ) {
+            keys.add(mamba)
+        }
+
+
         if( session.stubRun ) {
             keys.add('stub-run')
         }

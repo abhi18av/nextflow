@@ -113,8 +113,8 @@ class MambaCache {
 
         def cacheDir = configCacheDir0
 
-        if( !cacheDir && getEnv().NXF_CONDA_CACHEDIR )
-            cacheDir = getEnv().NXF_CONDA_CACHEDIR as Path
+        if( !cacheDir && getEnv().NXF_MAMBA_CACHEDIR )
+            cacheDir = getEnv().NXF_MAMBA_CACHEDIR as Path
 
         if( !cacheDir )
             cacheDir = getSessionWorkDir().resolve('mamba')

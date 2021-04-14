@@ -213,6 +213,10 @@ class CmdRun extends CmdBase implements HubOptions {
     @Parameter(names=['-with-conda'], description = 'Use the specified Conda environment package or file (must end with .yml|.yaml suffix)')
     String withConda
 
+    @Parameter(names=['-with-mamba'], description = 'Use the specified Mamba environment package or file (must end with .yml|.yaml suffix)')
+    String withMamba
+
+
     @Parameter(names=['-offline'], description = 'Do not check for remote project updates')
     boolean offline = System.getenv('NXF_OFFLINE') as boolean
 

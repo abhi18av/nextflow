@@ -234,6 +234,7 @@ class BashWrapperBuilder {
         binding.module_load = getModuleLoadSnippet()
         binding.before_script = getBeforeScriptSnippet()
         binding.conda_activate = getCondaActivateSnippet()
+        binding.mamba_activate = getMambaActivateSnippet()
 
         /*
          * add the task environment
@@ -348,6 +349,16 @@ class BashWrapperBuilder {
         def result = "# conda environment\n"
         result += 'source $(conda info --json | awk \'/conda_prefix/ { gsub(/"|,/, "", $2); print $2 }\')'
         result += "/bin/activate ${Escape.path(condaEnv)}\n"
+        return result
+    }
+
+
+    private String getMambaActivateSnippet() {
+        if( !mambaEnv )
+            return null
+        def result = "# mamba environment\n"
+        result += 'source $(mamba info --json | awk \'/mamba_prefix/ { gsub(/"|,/, "", $2); print $2 }\')'
+        result += "/bin/activate ${Escape.path(mambaEnv)}\n"
         return result
     }
 
